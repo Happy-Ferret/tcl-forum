@@ -1,0 +1,419 @@
+msg_added {<HTML>
+<HEAD>
+<META http-equiv="Refresh" content="0;URL=@LINKBACK@">
+<TITLE>Your message had been posted to the forum.</TITLE>
+</HEAD>
+<BODY background="graphics/bg.jpg" link=#00C000>
+<DIV align="right">
+Your message has been posted to the forum.<BR>
+Click <A HREF="@LINKBACK@">here</A> to return to the forum.<BR>
+</DIV>
+<HR>
+<CENTER>
+Forum software version @VERSION@<BR>
+Programmed by allow ole<BR>
+JavaScript and beta-test by ZigZagEr<BR>
+Graphics design: (Your name here)<BR>
+</CENTER>
+</BODY>
+</HTML>
+} msg_edit {<HTML>
+<HEAD>
+<TITLE>@NAME@ - Writing a @IF ISREPLY@reply@ELSE@message@END@</TITLE>
+<SCRIPT language="JavaScript">
+
+function IsEmailValid(str)
+{
+  // are regular expressions supported?
+  var supported = 0;
+  if (window.RegExp) {
+    var tempStr = "a";
+    var tempReg = new RegExp(tempStr);
+    if (tempReg.test(tempStr)) supported = 1;
+  }
+  if (!supported) 
+    return (str.indexOf(".") > 2) && (str.indexOf("@") > 0);
+  var r1 = new RegExp("(@.*@)|(\\.\\.)|(@\\.)|(^\\.)");
+  var r2 = new RegExp("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$");
+  return (!r1.test(str) && r2.test(str));
+
+}
+
+var submitcount=0;
+
+function checkFields() {  
+   theform=document.main;
+   if (theform.sender.value == '') {
+	theform.sender.style.backgroundColor='red';
+	alert('Please enter your name before submitting.');
+	return false;
+   }	
+   if (theform.subject.value == '') {
+	theform.subject.style.backgroundColor='red';
+	alert('Please enter a subject to the message before submitting.');
+	return false;
+   }
+   if (theform.sender_email.value != '') {
+	if (IsEmailValid(theform.sender_email.value) == false) {
+		theform.sender_email.style.backgroundColor='red';
+		alert('Please enter a valid email or dont enter an email at all.');
+		return false;
+	}
+   }
+
+   if (submitcount == 0) {
+      return true;
+   } else {
+      return false;
+   }
+}
+
+</SCRIPT>
+</HEAD>
+<BODY background="graphics/eng/bg.jpg" link=#00C000>
+<CENTER>
+<H1>@NAME@ Writing a @IF ISREPLY@reply@ELSE@message@END@</H1>
+</CENTER>
+<FORM action="@LINKPOST@" method="post" name="main" onSubmit="return checkFields()">
+<B>Name: </B>
+<INPUT type="text" size="25" maxlength="25" name="sender" onFocus="document.main.sender.style.backgroundColor='white'" value=""><BR>
+<b>Email Address:</B>
+<INPUT type="text" size="40" maxlength="40" name="sender_email" onFocus="document.main.sender_email.style.backgroundColor='white'" value=""><BR>
+<b>Subject: </b>
+<INPUT type="text" size="50" name="subject" onFocus="document.main.subject.style.backgroundColor='white'" value="" maxlength="50"><BR>
+<b>Message content:</b><BR>
+<FONT face="system">
+<textarea name="text" rows="10" cols="50" wrap="virtual"></textarea><BR>
+</FONT>
+<BR>
+<TABLE border="0">
+<TR>
+	<TD colspan=3 bgColor="#7c7c7c" align="center"><font color="#ffffff"><b>Attached URLs:</b></font></td>
+</TR>
+<TR>
+    <TD align="center">#</td>
+    <TD align="center">Url</td>
+    <TD align="center">Description</td>
+</TR>
+<TR>
+	<TD>
+	    1
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" name="url1" value="">
+	    </FONT>
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" value="" size="40" name="url1_desc">
+	    </FONT>
+	</TD>
+</TR>
+<TR>
+	<TD>
+	    2
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" name="url2" value="">
+	    </FONT>
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" value="" size="40" name="url2_desc">
+	    </FONT>
+	</TD>
+</TR>
+<TR>
+	<TD>
+	    3
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" name="url3" value="">
+	    </FONT>
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" value="" size="40" name="url3_desc">
+	    </FONT>
+	</TD>
+</TR>
+<TR>
+	<TD colspan="3">
+	    <BR>
+	</TD>
+</TR>
+</TABLE>
+
+<BR>
+
+<DIV align="center"><FONT face="system"><A href="@LINKBACK@"><img src="graphics/eng/back.gif" border=0></A><INPUT type="image" name="B1" value="Submit" src="graphics/eng/send.gif" border=0></FONT><BR>
+</FORM>
+<SMALL>Please hit the 'send' button only once. Thanks.<BR></SMALL>
+<HR>
+<CENTER>
+Forum software version @VERSION@<BR>
+Programmed by allow ole<BR>
+JavaScript and beta-test by ZigZagEr<BR>
+Graphics design: (Your name here)<BR>
+</CENTER>
+</BODY>
+</HTML>
+} msg_new {<HTML>
+<HEAD>
+<TITLE>@NAME@ - Writing a @IF ISREPLY@reply@ELSE@message@END@</TITLE>
+<SCRIPT language="JavaScript">
+
+function IsEmailValid(str)
+{
+  // are regular expressions supported?
+  var supported = 0;
+  if (window.RegExp) {
+    var tempStr = "a";
+    var tempReg = new RegExp(tempStr);
+    if (tempReg.test(tempStr)) supported = 1;
+  }
+  if (!supported) 
+    return (str.indexOf(".") > 2) && (str.indexOf("@") > 0);
+  var r1 = new RegExp("(@.*@)|(\\.\\.)|(@\\.)|(^\\.)");
+  var r2 = new RegExp("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$");
+  return (!r1.test(str) && r2.test(str));
+
+}
+
+var submitcount=0;
+
+function checkFields() {  
+   theform=document.main;
+   if (theform.sender.value == '') {
+	theform.sender.style.backgroundColor='red';
+	alert('Please enter your name before submitting.');
+	return false;
+   }	
+   if (theform.subject.value == '') {
+	theform.subject.style.backgroundColor='red';
+	alert('Please enter a subject to the message before submitting.');
+	return false;
+   }
+   if (theform.sender_email.value != '') {
+	if (IsEmailValid(theform.sender_email.value) == false) {
+		theform.sender_email.style.backgroundColor='red';
+		alert('Please enter a valid email or dont enter an email at all.');
+		return false;
+	}
+   }
+
+   if (submitcount == 0) {
+      return true;
+   } else {
+      return false;
+   }
+}
+
+</SCRIPT>
+</HEAD>
+<BODY background="graphics/eng/bg.jpg" link=#00C000>
+<CENTER>
+<H1>@NAME@ Writing a @IF ISREPLY@reply@ELSE@message@END@</H1>
+</CENTER>
+<FORM action="@LINKPOST@" method="post" name="main" onSubmit="return checkFields()">
+<B>Name: </B>
+<INPUT type="text" size="25" maxlength="25" name="sender" onFocus="document.main.sender.style.backgroundColor='white'" value=""><BR>
+<b>Email Address:</B>
+<INPUT type="text" size="40" maxlength="40" name="sender_email" onFocus="document.main.sender_email.style.backgroundColor='white'" value=""><BR>
+<b>Subject: </b>
+<INPUT type="text" size="50" name="subject" onFocus="document.main.subject.style.backgroundColor='white'" value="" maxlength="50"><BR>
+<b>Message content:</b><BR>
+<FONT face="system">
+<textarea name="text" rows="10" cols="50" wrap="virtual"></textarea><BR>
+</FONT>
+<BR>
+<TABLE border="0">
+<TR>
+	<TD colspan=3 bgColor="#7c7c7c" align="center"><font color="#ffffff"><b>Attached URLs:</b></font></td>
+</TR>
+<TR>
+    <TD align="center">#</td>
+    <TD align="center">Url</td>
+    <TD align="center">Description</td>
+</TR>
+<TR>
+	<TD>
+	    1
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" name="url1" value="">
+	    </FONT>
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" value="" size="40" name="url1_desc">
+	    </FONT>
+	</TD>
+</TR>
+<TR>
+	<TD>
+	    2
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" name="url2" value="">
+	    </FONT>
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" value="" size="40" name="url2_desc">
+	    </FONT>
+	</TD>
+</TR>
+<TR>
+	<TD>
+	    3
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" name="url3" value="">
+	    </FONT>
+	</TD>
+	<TD>
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" value="" size="40" name="url3_desc">
+	    </FONT>
+	</TD>
+</TR>
+<TR>
+	<TD colspan="3">
+	    <BR>
+	</TD>
+</TR>
+</TABLE>
+
+<BR>
+
+<DIV align="center"><FONT face="system"><A href="@LINKBACK@"><img src="graphics/eng/back.gif" border=0></A><INPUT type="image" name="B1" value="Submit" src="graphics/eng/send.gif" border=0></FONT><BR>
+</FORM>
+<SMALL>Please hit the 'send' button only once. Thanks.<BR></SMALL>
+<HR>
+<CENTER>
+Forum software version @VERSION@<BR>
+Programmed by allow ole<BR>
+JavaScript and beta-test by ZigZagEr<BR>
+Graphics design: (Your name here)<BR>
+</CENTER>
+</BODY>
+</HTML>
+} msg_link {
+<A HREF="@LINK@">@LINK@</A> - @LINKDESC@<BR>
+} msg_view {
+<HTML>
+<HEAD>
+<TITLE>@NAME@ - Viewing a message</TITLE>
+<BODY background="graphics/eng/bg.jpg" link=#00C000>
+<CENTER>
+<H1>@NAME@ - Viewing a message</H1>
+</CENTER>
+Date: @TIME@ @DATE@<BR>
+Sent by: @IF EMAILSET@<A HREF="mailto:@EMAIL@">@SENDER@</A>@ELSE@@SENDER@@END@<br>
+Subject: @SUBJECT@<BR>
+<BR>
+@TEXT@
+@IF GOTLINKS@
+<BR><BR>
+Attached links:<BR>
+@LINKS@
+@END@
+@IF GOTREPLIES@
+<BR><BR>Replies:<BR>@FOLLOWUPS@
+@END@
+<P>
+<DIV align="center">
+<A HREF="@LINKREPLY@"><IMG src="graphics/eng/reply.gif" border="0"></A>&nbsp;
+<A HREF="@LINKBACK@"><IMG src="graphics/eng/back.gif" border="0"></A>
+@IF ADMIN@
+&nbsp;
+<A HREF="@LINKDELETE@"><IMG src="graphics/eng/delmsg.gif" border="0"></A>
+@END@
+</DIV>
+<HR>
+<CENTER>
+Forum software version @VERSION@<BR>
+Programmed by allow ole<BR>
+JavaScript and beta-test by ZigZagEr<BR>
+Graphics design: (Your name here)<BR>
+</CENTER>
+</BODY>
+</HTML>
+} forum_message {
+@SPACING@@IF GOTREPLIES@<IMG src="graphics/eng/bu1.gif">@ELSE@<IMG src="graphics/eng/bu2.gif">@END@&nbsp;<A HREF="@LINKVIEW@">@SUBJECT@</A>&nbsp;-&nbsp;@IF EMAILSET@<A HREF="mailto:@EMAIL@">@SENDER@</A>@ELSE@@SENDER@@END@&nbsp;@TIME@&nbsp;@DATE@@IF NOCONTENTS@&nbsp;<IMG src="graphics/eng/nocontents.gif">@END@@IF NEW@&nbsp;<IMG src="graphics/eng/new.gif">@END@@IF ADMIN@&nbsp;<A HREF="@LINKDELETE@"><IMG src="graphics/eng/delete.gif" border=0></A>@END@@IF GOTREPLIES@
+@FOLLOWUPS@@END@
+} rtl 0 forum_start {
+<HTML>
+<HEAD>
+<TITLE>@NAME@</TITLE></HEAD>
+<BODY background="graphics/eng/bg.jpg" link=#00C000>
+<P align="center"><CENTER>
+<H1><FONT color="#00C000">@NAME@ (@MSGCOUNT@ Messages)</FONT></H1>
+@IF PREVPAGE@
+	<A href="@LINKPREV@">(Previous page)</A>
+@ELSE@
+	<FONT color="gray">(Previous Page)</FONT>
+@END@
+&nbsp;&nbsp;
+@IF NEXTPAGE@
+	<A href="@LINKNEXT@">(Next Page)</A>
+@ELSE@
+	<FONT color="gray">(Next Page)</FONT>
+@END@
+<BR><BR>
+} invalid {<HTML>
+<HEAD>
+<TITLE>Invalid request</TITLE>
+</HEAD>
+<BODY background="graphics/bg.jpg" link=#00C000>
+Invalid request: <B>@ERRORTEXT@</B>.<BR>
+Click <a href="javascript:history.back()">here</a> to return.
+<HR>
+<CENTER>
+Forum software version @VERSION@<BR>
+Programmed by allow ole<BR>
+JavaScript and beta-test by ZigZagEr<BR>
+Graphics design: (Your name here)<BR>
+</CENTER>
+</BODY>
+</HTML>
+} forum_end {
+<DIV align="center">
+<BR>
+<BR>
+<A HREF="@LINKADD@"><IMG border="0" src="graphics/eng/newmsg.gif"></A>
+<BR>
+<A HREF="javascript:location.reload()"><IMG border="0" src="graphics/eng/refresh.gif"></A>
+<BR>
+<BR>
+@IF PREVPAGE@
+	<A href="@LINKPREV@">(Previous page)</A>
+@ELSE@
+	<FONT color="gray">(Previous Page)</FONT>
+@END@
+&nbsp;&nbsp;
+@IF NEXTPAGE@
+	<A href="@LINKNEXT@">(Next Page)</A>
+@ELSE@
+	<FONT color="gray">(Next Page)</FONT>
+@END@
+</DIV>
+<HR>
+<CENTER>
+Forum software version @VERSION@<BR>
+Programmed by allow ole<BR>
+JavaScript and beta-test by ZigZagEr<BR>
+Graphics design: (Your name here)<BR>
+</CENTER>
+</P>
+</CENTER>
+</BODY>
+</HTML>
+}

@@ -1,0 +1,502 @@
+msg_added {<HTML>
+<HEAD>
+<!--Hebrew font meta tag -->
+<META content="text/html; charset=iso-8859-8" http-equiv=Content-Type>
+<META http-equiv="Refresh" content="0;URL=@LINKBACK@">
+<TITLE>ההודעה התקבלה במערכת</TITLE>
+</HEAD>
+<BODY background="/forum/heb/bg.jpg" link=#00C000>
+<DIV align="right">
+תכרעמב הלבקתה ךתעדוה<BR>
+.םורופל בושל תנמ לע <A HREF="@LINKBACK@">ןאכ</A> ץחל<BR>
+</DIV>
+<HR>
+<CENTER>
+@VERSION@ הרודהמ םורופ<BR>
+דקש ירוא י"ע תנכות<BR>
+רלדא ירשוא :JavaScript<BR>
+ישאנ לג :יפארג בוציע
+</CENTER>
+</BODY>
+</HTML>
+} msg_edit {<HTML>
+<HEAD>
+<!--Hebrew font meta tag -->
+<META content="text/html; charset=iso-8859-8" http-equiv=Content-Type>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<TITLE>העדוה תכירע - @NAME@</TITLE>
+<script  language="javascript">
+
+if (document.images){
+
+        sendon = new Image();sendon.src = "/forum/tal_sharon/sendon.jpg";
+        sendoff = new Image();sendoff.src = "/forum/tal_sharon/sendoff.jpg";
+        backon = new Image();backon.src = "/forum/tal_sharon/backon.jpg";
+        backoff = new Image();backoff.src = "/forum/tal_sharon/backoff.jpg";
+
+}
+   
+function swapem(iname, gname) {
+        iname.src = gname.src;
+}
+
+
+// End Script -->
+
+
+</SCRIPT>
+<SCRIPT language="JavaScript">
+
+function IsEmailValid(str)
+{
+  // are regular expressions supported?
+  var supported = 0;
+  if (window.RegExp) {
+    var tempStr = "a";
+    var tempReg = new RegExp(tempStr);
+    if (tempReg.test(tempStr)) supported = 1;
+  }
+  if (!supported) 
+    return (str.indexOf(".") > 2) && (str.indexOf("@") > 0);
+  var r1 = new RegExp("(@.*@)|(\\.\\.)|(@\\.)|(^\\.)");
+  var r2 = new RegExp("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$");
+  return (!r1.test(str) && r2.test(str));
+
+}
+
+var submitcount=0;
+
+function checkFields() {  
+   theform=document.main;
+   if (theform.sender.value == '') {
+	theform.sender.style.backgroundColor='red';
+	alert('Please enter your name before submitting.');
+	return false;
+   }	
+   if (theform.subject.value == '') {
+	theform.subject.style.backgroundColor='red';
+	alert('Please enter a subject to the message before submitting.');
+	return false;
+   }
+   if (theform.sender_email.value != '') {
+	if (IsEmailValid(theform.sender_email.value) == false) {
+		theform.sender_email.style.backgroundColor='red';
+		alert('Please enter a valid email or dont enter an email at all.');
+		return false;
+	}
+   }
+
+   if (submitcount == 0) {
+      return true;
+   } else {
+      return false;
+   }
+}
+
+</SCRIPT>
+</HEAD>
+<BODY background="/forum/tal_sharon/bg.jpg" link=#00C000>
+<CENTER>
+<H1>העדוה תכירע - @NAME@</H1>
+</CENTER>
+<FORM action="@LINKPOST@" method="post" name="main" onSubmit="return checkFields()">
+<DIV align="center">
+<TABLE border="0" width="754">
+<TR>
+	<TD align="right">
+	<FONT face="arial (hebrew)">
+	<INPUT type="text" size="25" maxlength="25" name="sender" onFocus="document.main.sender.style.backgroundColor='white'" dir="RTL" value="@SENDER@"></FONT></TD>
+	<TD align="right"><i>םש</i></td>
+</TR>
+<TR>
+	<TD align="right"><FONT face="arial (hebrew)"><INPUT type="text" size="40" maxlength="40" name="sender_email" onFocus="document.main.sender_email.style.backgroundColor='white'" dir="LTR" value="@EMAIL@"></FONT></TD>
+	<TD align="right"><i>Email תבותכ</i>
+	</TD>
+</TR>
+<TR>
+	<TD align="right"><FONT face="arial (hebrew)"><INPUT type="text" size="50" name="subject" onFocus="document.main.subject.style.backgroundColor='white'" value="@SUBJECT@" maxlength="50" dir="RTL"></FONT></TD>
+	<TD align="right"><em>:אשונ</em> </td>
+</TR>
+</TABLE></DIV>
+<P align="center"><DIV align="center">
+<FONT size="4" color="#6D6823"><b>העדוהה ןכות</b></FONT><BR>
+(תדלקמה לש ןימי דצב <FONT color="red">Ctrl+Shift</FONT> לע ץוחלל שי תירבעב החונ הביתכל)<BR>
+<FONT face="system">
+<textarea name="text" dir="rtl" rows="10" cols="50" wrap="virtual">@TEXT@</textarea><BR>
+</FONT>
+</P></DIV>
+<DIV align="center">
+<BR>
+</DIV>
+<DIV align="center"><FONT face="system"><A href="@LINKVIEW@" onmouseover="swapem(back, backon); return true" onmouseout="swapem(back, backoff)"><img name="back" src="/forum/tal_sharon/backoff.jpg" border=0></A><INPUT type="image" name="send" value="Submit" src="/forum/tal_sharon/sendoff.jpg" border=0></FONT><BR>
+</FORM>
+<SMALL>.הדות - דבלב תחא םעפ רותפכה לע ץוחלל אנ<BR></SMALL>
+<HR>
+<CENTER>
+@VERSION@ הרודהמ םורופ<BR>
+דקש ירוא י"ע תנכות<BR>
+רלדא ירשוא :JavaScript<BR>
+ישאנ לג :יפארג בוציע
+</CENTER>
+</BODY>
+</HTML>
+} msg_new {<HTML>
+<HEAD>
+<!--Hebrew font meta tag -->
+<META content="text/html; charset=iso-8859-8" http-equiv=Content-Type>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<TITLE>@IF ISREPLY@הבוגת@ELSE@העדוה@END@ תפסוה - @NAME@</TITLE>
+<script  language="javascript">
+
+if (document.images){
+
+        sendon = new Image();sendon.src = "/forum/heb/sendon.gif";
+        sendoff = new Image();sendoff.src = "/forum/heb/sendoff.gif";
+        backon = new Image();backon.src = "/forum/heb/backon.gif";
+        backoff = new Image();backoff.src = "/forum/heb/backoff.gif";
+
+}
+   
+function swapem(iname, gname) {
+        iname.src = gname.src;
+}
+
+
+// End Script -->
+
+
+</SCRIPT>
+<SCRIPT language="JavaScript">
+
+function IsEmailValid(str)
+{
+  // are regular expressions supported?
+  var supported = 0;
+  if (window.RegExp) {
+    var tempStr = "a";
+    var tempReg = new RegExp(tempStr);
+    if (tempReg.test(tempStr)) supported = 1;
+  }
+  if (!supported) 
+    return (str.indexOf(".") > 2) && (str.indexOf("@") > 0);
+  var r1 = new RegExp("(@.*@)|(\\.\\.)|(@\\.)|(^\\.)");
+  var r2 = new RegExp("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$");
+  return (!r1.test(str) && r2.test(str));
+
+}
+
+var submitcount=0;
+
+function checkFields() {  
+   theform=document.main;
+   if (theform.sender.value == '') {
+	theform.sender.style.backgroundColor='red';
+	alert('Please enter your name before submitting.');
+	return false;
+   }	
+   if (theform.subject.value == '') {
+	theform.subject.style.backgroundColor='red';
+	alert('Please enter a subject to the message before submitting.');
+	return false;
+   }
+   if (theform.sender_email.value != '') {
+	if (IsEmailValid(theform.sender_email.value) == false) {
+		theform.sender_email.style.backgroundColor='red';
+		alert('Please enter a valid email or dont enter an email at all.');
+		return false;
+	}
+   }
+
+   if (submitcount == 0) {
+      return true;
+   } else {
+      return false;
+   }
+}
+
+</SCRIPT>
+</HEAD>
+<BODY background="/forum/heb/bg.jpg" link=#00C000>
+<CENTER>
+<H1>@IF ISREPLY@הבוגת@ELSE@העדוה@END@ תפסוה - @NAME@</H1>
+</CENTER>
+<FORM action="@LINKPOST@" method="post" name="main" onSubmit="return checkFields()">
+<DIV align="center">
+<TABLE border="0" width="754">
+<TR>
+	<TD align="right">
+	<FONT face="arial (hebrew)">
+	<INPUT type="text" size="25" maxlength="25" name="sender" onFocus="document.main.sender.style.backgroundColor='white'" dir="RTL" value=""></FONT></TD>
+	<TD align="right"><i>םש</i></td>
+</TR>
+<TR>
+	<TD align="right"><FONT face="arial (hebrew)"><INPUT type="text" size="40" maxlength="40" name="sender_email" onFocus="document.main.sender_email.style.backgroundColor='white'" dir="LTR" value=""></FONT></TD>
+	<TD align="right"><i>Email תבותכ</i>
+	</TD>
+</TR>
+<TR>
+	<TD align="right"><FONT face="arial (hebrew)"><INPUT type="text" size="50" name="subject" onFocus="document.main.subject.style.backgroundColor='white'" value="" maxlength="50" dir="RTL"></FONT></TD>
+	<TD align="right"><em>:אשונ</em> </td>
+</TR>
+</TABLE></DIV>
+<P align="center"><DIV align="center">
+<FONT size="4" color="#6D6823"><b>העדוהה ןכות</b></FONT><BR>
+(תדלקמה לש ןימי דצב <FONT color="red">Ctrl+Shift</FONT> לע ץוחלל שי תירבעב החונ הביתכל)<BR>
+<FONT face="system">
+<textarea name="text" dir="rtl" rows="10" cols="50" wrap="virtual"></textarea><BR>
+</FONT>
+</P></DIV>
+<DIV align="center">
+<BR>
+<TABLE border="0">
+<TR>
+	<TD colspan=3 bgColor="#7c7c7c" align="right"><font color="#ffffff"><b>תוולינ טנרטניא תובותכ</b></font></td>
+</TR>
+<TR>
+    <TD align="center">רואית</td>
+    <TD align="center">תבותכ</td>
+    <TD align="center"></td>
+</TR>
+<TR>
+	<TD align="right">
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT dir="rtl" type="text" value="" size="40" name="url1_desc">
+	    </FONT>
+	</TD>
+	<TD align="right">
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" dir="ltr" name="url1" value="">
+	    </FONT>
+	</TD>
+	<TD align="right">
+	    1
+	</TD>
+</TR>
+<TR>
+	<TD align="right">
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT dir="rtl" type="text" value="" size="40" name="url2_desc">
+	    </FONT>
+	</TD>
+	<TD align="right">
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" dir="ltr" name="url2" value="">
+	    </FONT>
+	</TD>
+        <TD align="right">
+	    2
+	</TD>
+</TR>
+<TR>
+	<TD align="right">
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT dir="rtl" type="text" value="" size="40" name="url3_desc">
+	    </FONT>
+	</TD>
+	<TD align="right">
+	    <FONT face="arial (hebrew)" size="-1">
+	    <INPUT type="text" dir="ltr" name="url3" value="">
+	    </FONT>
+	</TD>
+	<TD align="right">
+	    3
+	</TD>
+</TR>
+<TR>
+	<TD colspan="3">
+	    <BR>
+	</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV align="center"><FONT face="system"><A href="@LINKBACK@" onmouseover="swapem(back, backon); return true" onmouseout="swapem(back, backoff)"><img name="back" src="/forum/heb/backoff.gif" border=0></A><INPUT type="image" name="send" value="Submit" src="/forum/heb/sendoff.gif" border=0></FONT><BR>
+</FORM>
+<SMALL>.הדות - דבלב תחא םעפ רותפכה לע ץוחלל אנ<BR></SMALL>
+<HR>
+<CENTER>
+@VERSION@ הרודהמ םורופ<BR>
+דקש ירוא י"ע תנכות<BR>
+רלדא ירשוא :JavaScript<BR>
+ישאנ לג :יפארג בוציע
+</CENTER>
+</BODY>
+</HTML>
+} msg_link {
+@LINKDESC@ - <A HREF="@LINK@">@LINK@</A><BR>
+} msg_view {
+<HTML>
+<HEAD>
+<!--Hebrew font meta tag -->
+<META content="text/html; charset=iso-8859-8" http-equiv=Content-Type>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<TITLE>העדוהב הייפצ - @NAME@</TITLE>
+<script  language="javascript">
+
+if (document.images){
+
+        replyon = new Image();replyon.src = "/forum/heb/replyon.gif";
+        replyoff = new Image();replyoff.src = "/forum/heb/replyoff.gif";
+        backon = new Image();backon.src = "/forum/heb/backon.gif";
+        backoff = new Image();backoff.src = "/forum/heb/backoff.gif";
+@IF ADMIN@
+        deleteon = new Image();deleteon.src = "/forum/heb/deleteon.gif";
+        deleteoff = new Image();deleteoff.src = "/forum/heb/deleteoff.gif";
+
+@END@
+}
+   
+function swapem(iname, gname) {
+        iname.src = gname.src;
+}
+
+
+// End Script -->
+
+
+</SCRIPT>
+<BODY background="/forum/heb/bg.jpg" link=#00C000>
+<CENTER>
+<H1>העדוהב הייפצ - @NAME@</H1>
+</CENTER>
+<DIV ALIGN="right">
+@DATE@ @TIME@ :ךיראת<BR>
+@IF EMAILSET@<A HREF="mailto:@EMAIL@">@SENDER@</A>@ELSE@@SENDER@@END@ :תאמ<br>
+@SUBJECT@ :אשונ<BR>
+</DIV>
+<BR>
+<DIV align="right">
+@TEXT@
+@IF GOTLINKS@
+<BR><BR>
+:תוולנ טנרטניא תובותכ<BR>
+@LINKS@
+@END@
+@IF GOTREPLIES@
+<BR>
+<BR>
+:תובוגת<BR>
+@FOLLOWUPS@
+@END@
+</DIV>
+<P>
+<DIV align="center">
+<A HREF="@LINKREPLY@" onmouseover="swapem(reply, replyon); return true" onmouseout="swapem(reply, replyoff)"><IMG src="/forum/heb/replyoff.gif" name="reply" border="0"></A>&nbsp;
+<A HREF="@LINKBACK@" onmouseover="swapem(back, backon); return true" onmouseout="swapem(back, backoff)"><IMG src="/forum/heb/backoff.gif" name="back" border="0"></A>
+@IF ADMIN@
+&nbsp;
+<A HREF="@LINKDELETE@" onmouseover="swapem(delete, deleteon); return true" onmouseout="swapem(delete, deleteoff)"><IMG src="/forum/heb/deleteoff.gif" name="delete" border="0"></A>
+@END@
+</DIV>
+<HR>
+<CENTER>
+@VERSION@ הרודהמ םורופ<BR>
+דקש ירוא י"ע תנכות<BR>
+רלדא ירשוא :JavaScript<BR>
+ישאנ לג :יפארג בוציע
+</CENTER>
+</BODY>
+</HTML>
+} forum_message {
+@IF ADMIN@<A href="@LINKDELETE@"><IMG src="/forum/heb/delete.gif" border=0></A>&nbsp;@END@@IF NEW@<IMG src="/forum/heb/new.gif">&nbsp;@END@@IF NOCONTENTS@<IMG src="/forum/heb/nocontents.gif">&nbsp;@END@@DATE@ @TIME@ @IF EMAILSET@<A HREF="mailto:@EMAIL@">@SENDER@</A>@ELSE@@SENDER@@END@ - <A HREF="@LINKVIEW@">@SUBJECT@</A>&nbsp;@IF GOTREPLIES@<IMG src="/forum/heb/bu1.gif">@ELSE@<IMG src="/forum/heb/bu2.gif">@END@@SPACING@<BR>
+@IF GOTREPLIES@
+@FOLLOWUPS@@END@
+} rtl 1 forum_start {
+<HTML>
+<HEAD>
+<!--Hebrew font meta tag -->
+<META content="text/html; charset=iso-8859-8" http-equiv=Content-Type>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<TITLE>@NAME@</TITLE></HEAD>
+<script  language="javascript">
+
+if (document.images){
+
+        refreshon = new Image();refreshon.src = "/forum/heb/refreshon.gif";
+	refreshoff = new Image();refreshoff.src = "/forum/heb/refreshoff.gif";
+			   
+        newmsgon = new Image();newmsgon.src = "/forum/heb/newmsgon.gif";
+        newmsgoff = new Image();newmsgoff.src = "/forum/heb/newmsgoff.gif";
+
+}
+   
+function swapem(iname, gname) {
+        iname.src = gname.src;
+}
+
+
+// End Script -->
+
+
+</SCRIPT>
+<BODY background="/forum/heb/bg.jpg" link=#00C000>
+<P align="center"><CENTER>
+<H1><FONT color="#00C000">(תועדוה @MSGCOUNT@) @NAME@</FONT></H1>
+@IF PREVPAGE@
+	<A href="@LINKPREV@">(םדוקה דומעה)</A>
+@ELSE@
+	<FONT color="gray">(םדוקה דומעה)</FONT>
+@END@
+&nbsp;&nbsp;
+@IF NEXTPAGE@
+	<A href="@LINKNEXT@">(אבה דומעה)</A>
+@ELSE@
+	<FONT color="gray">(אבה דומעה)</FONT>
+@END@
+<BR><BR>
+<DIV align="right">
+} invalid {<HTML>
+<HEAD>
+<!--Hebrew font meta tag -->
+<META content="text/html; charset=iso-8859-8" http-equiv=Content-Type>
+<TITLE>Invalid request</TITLE>
+</HEAD>
+<BODY background="/forum/heb/bg.jpg" link=#00C000>
+Invalid request: <B>@ERRORTEXT@</B>.<BR>
+Click <a href="javascript:history.back()">here</a> to return.
+<HR>
+<CENTER>
+@VERSION@ הרודהמ םורופ<BR>
+דקש ירוא י"ע תנכות<BR>
+רלדא ירשוא :JavaScript<BR>
+ישאנ לג :יפארג בוציע
+</CENTER>
+</BODY>
+</HTML>
+} forum_end {
+</DIV>
+<DIV align="center">
+<BR>
+<BR>
+<A HREF="@LINKADD@" onmouseover="swapem(newmsg, newmsgon); return true" onmouseout="swapem(newmsg, newmsgoff)"><IMG border="0" src="/forum/heb/newmsgoff.gif" name="newmsg"></A>
+<BR>
+<A HREF="javascript:location.reload()" onmouseover="swapem(refresh, refreshon); return true" onmouseout="swapem(refresh, refreshoff)"><IMG border="0" src="/forum/heb/refreshoff.gif" name="refresh"></A>
+<BR>
+<BR>
+@IF PREVPAGE@
+	<A href="@LINKPREV@">(םדוקה דומעה)</A>
+@ELSE@
+	<FONT color="gray">(םדוקה דומעה)</FONT>
+@END@
+&nbsp;&nbsp;
+@IF NEXTPAGE@
+	<A href="@LINKNEXT@">(אבה דומעה)</A>
+@ELSE@
+	<FONT color="gray">(אבה דומעה)</FONT>
+@END@
+</DIV>
+<HR>
+<CENTER>
+@VERSION@ הרודהמ םורופ<BR>
+דקש ירוא י"ע תנכות<BR>
+רלדא ירשוא :JavaScript<BR>
+ישאנ לג :יפארג בוציע
+</CENTER>
+</P>
+</CENTER>
+</BODY>
+</HTML>
+}
